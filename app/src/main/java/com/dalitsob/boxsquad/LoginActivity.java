@@ -36,6 +36,7 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.Profile;
 import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
@@ -116,23 +117,36 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         callbackManager = CallbackManager.Factory.create();
 
-//        LoginManager.getInstance().registerCallback(callbackManager,
-//                new FacebookCallback<LoginResult>() {
-//                    @Override
-//                    public void onSuccess(LoginResult loginResult) {
-//                        // App code
-//                    }
-//
-//                    @Override
-//                    public void onCancel() {
-//                        // App code
-//                    }
-//
-//                    @Override
-//                    public void onError(FacebookException exception) {
-//                        // App code
-//                    }
-//                });
+        LoginManager.getInstance().registerCallback(callbackManager,
+                new FacebookCallback<LoginResult>() {
+                    @Override
+                    public void onSuccess(LoginResult loginResult) {
+                        // App code
+                        System.out.println(loginResult.getRecentlyGrantedPermissions().toString());
+                        System.out.println(loginResult.getAccessToken().getPermissions());
+                        System.out.println(loginResult.toString());
+
+                        Profile p = Profile.getCurrentProfile();
+                        System.out.println(p.toString());
+                        System.out.println(p.getName());
+                        System.out.println(p.getProfilePictureUri(800, 800));
+
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        intent.putExtra("profile", p);
+                        intent.putExtra("token", loginResult.getAccessToken());
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        // App code
+                    }
+
+                    @Override
+                    public void onError(FacebookException exception) {
+                        // App code
+                    }
+                });
 //
 //        LoginButton loginButton = (LoginButton) findViewById(R.id.login_button);
 //        loginButton.setOnClickListener(new OnClickListener() {
