@@ -36,6 +36,9 @@ public class FetchAddressIntentService extends IntentService{
                 Constants.LOCATION_DATA_EXTRA);
         mReceiver = intent.getParcelableExtra(
                 Constants.RECEIVER);
+        if (mReceiver == null){
+            Log.e(TAG, "reciever is null");
+        }
         List<Address> addresses = null;
 
         String errorMessage ="";
@@ -86,5 +89,14 @@ public class FetchAddressIntentService extends IntentService{
         Bundle bundle = new Bundle();
         bundle.putString(Constants.RESULT_DATA_KEY, message);
         mReceiver.send(resultCode, bundle);
+    }
+
+    private String getStreetEasyJson(){
+        String lat ="";
+        String lon;
+        String distance;
+        String Endpoint = "http://streeteasy.com/nyc/api/rentals/data";
+        return "?criteria=near:"+ lat + "&key="+ Constants.STREETEASY_KEY + "&format=json";
+        //return null;
     }
 }

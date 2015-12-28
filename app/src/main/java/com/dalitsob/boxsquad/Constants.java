@@ -14,4 +14,6 @@ public class Constants {
         public static final String LOCATION_DATA_EXTRA = PACKAGE_NAME +
                 ".LOCATION_DATA_EXTRA";
 
+        public static final String STREETEASY_KEY= "1e2b4aff70d30e4568eb2c59c632e5e7319a5ba5";
+
 }
