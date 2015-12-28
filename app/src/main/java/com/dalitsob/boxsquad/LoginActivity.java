@@ -20,6 +20,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,6 +33,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -117,6 +119,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         callbackManager = CallbackManager.Factory.create();
 
+
         LoginManager.getInstance().registerCallback(callbackManager,
                 new FacebookCallback<LoginResult>() {
                     @Override
@@ -131,16 +134,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                         System.out.println(p.getName());
                         System.out.println(p.getProfilePictureUri(800, 800));
 
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                        intent.putExtra("profile", p);
-                        intent.putExtra("token", loginResult.getAccessToken());
-                        startActivity(intent);
+                        goToMain(p, loginResult.getAccessToken());
+
                     }
 
                     @Override
                     public void onCancel() {
                         // App code
                     }
+
 
                     @Override
                     public void onError(FacebookException exception) {
@@ -157,6 +159,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 //            }
 //        });
 
+        Profile profile = Profile.getCurrentProfile();
+        if (profile != null || AccessToken.getCurrentAccessToken() != null){
+            Log.d("profile", profile.toString() );
+            goToMain(profile, AccessToken.getCurrentAccessToken());
+        }
+
+
     }
 
     private void populateAutoComplete() {
@@ -167,6 +176,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         getLoaderManager().initLoader(0, null, this);
     }
 
+    private void goToMain(Profile p, AccessToken token){
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        intent.putExtra("profile", p);
+        intent.putExtra("token", token);
+        startActivity(intent);
+    }
     private boolean mayRequestContacts() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             return true;
@@ -187,6 +202,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             requestPermissions(new String[]{READ_CONTACTS}, REQUEST_READ_CONTACTS);
         }
         return false;
+
+
     }
 
     /**

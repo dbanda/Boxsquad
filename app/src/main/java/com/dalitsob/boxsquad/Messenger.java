@@ -25,7 +25,9 @@ public class Messenger {
 
         // contentUri points to the content being shared to Messenger
         ShareToMessengerParams shareToMessengerParams =
-                ShareToMessengerParams.newBuilder("uri", mimeType)
+                ShareToMessengerParams.
+
+                        newBuilder(uri, mimeType)
                         .build();
 
         // Sharing from an Activity

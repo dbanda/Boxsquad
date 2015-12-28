@@ -42,7 +42,32 @@
         android:layout_height="wrap_content"
         android:text="messenger"
         android:id="@+id/messengerBtn"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/textView"
-        android:layout_marginBottom="63dp" />
+        android:layout_below="@+id/skypeBtn"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Latitude"
+        android:id="@+id/latitude"
+        android:layout_below="@+id/messengerBtn"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Longitude"
+        android:id="@+id/longitude"
+        android:layout_below="@+id/latitude"
+        android:layout_centerHorizontal="true" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Street"
+        android:id="@+id/street"
+        android:layout_below="@+id/longitude"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
