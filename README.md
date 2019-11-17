@@ -22,3 +22,5 @@ what gucci?
 what's lou my killer?
 
 what's drugs? my dealer?
+
+what's that jacket? 
