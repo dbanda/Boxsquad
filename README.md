@@ -20,3 +20,5 @@ cauz if i was him, i woulda
 what gucci?
 
 what's lou my killer?
+
+what's drugs 
