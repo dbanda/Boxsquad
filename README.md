@@ -17,4 +17,6 @@ ain't doing it right if you ask me
 cauz if i was him, i woulda
  
  married kate an ashley
-what gucci? what's lou my killer?
+what gucci?
+
+what's lou my killer?
