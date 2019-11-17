@@ -21,4 +21,4 @@ what gucci?
 
 what's lou my killer?
 
-what's drugs 
+what's drugs? my dealer?
