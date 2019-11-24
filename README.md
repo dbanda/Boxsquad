@@ -36,3 +36,5 @@ public
 donald.trump
 
 bkb.obama
+
+microsoft.com
