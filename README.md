@@ -40,3 +40,5 @@ bkb.obama
 microsoft.com
 
 cancer.org
+
+https://bing.com
