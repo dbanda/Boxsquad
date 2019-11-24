@@ -34,3 +34,5 @@ bill clinton
 public
 
 donald.trump
+
+bkb.obama
